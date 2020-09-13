@@ -20,7 +20,10 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project multi-k8s-289408
   - gcloud config set compute/zone europe-west1-b
-  - gcloud container clusters get-credentials multi-k8s-289408
+  - gcloud container clusters get-credentials multi-k8s --region europe-west1 --project multi-k8s-280408
+
+
+
   
     # Log into GCR
   #- yes | gcloud auth configure-docker
