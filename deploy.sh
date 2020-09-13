@@ -1,26 +1,16 @@
-#!/usr/bin/env bash
+docker build -t ctl11/multi-client:latest -t ctl11/multi-client:$SHA -f ./client/Dockerfile ./client
+docker build -t ctl11/multi-server:latest -t ctl11/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t ctl11/multi-worker:latest -t ctl11/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
-IMAGES=( client server worker )
-CONTAINER_PREFIX=eu.gcr.io/docker-kubernetes-237606/jsdevtom/multi-
-GIT_SHA=$(git rev-parse HEAD)
+docker push ctl11/multi-client:latest
+docker push ctl11/multi-server:latest
+docker push ctl11/multi-worker:latest
 
-for i in ${IMAGES[@]}
-do
-	docker build \
-	    -t ${CONTAINER_PREFIX}${i}:latest \
-	    -t ${CONTAINER_PREFIX}${i}:${GIT_SHA} \
-	    -f ./${i}/Dockerfile ./${i}
-    docker push ${CONTAINER_PREFIX}${i}:latest
-    docker push ${CONTAINER_PREFIX}${i}:${GIT_SHA}
-done
+docker push ctl11/multi-client:$SHA
+docker push ctl11/multi-server:$SHA
+docker push ctl11/multi-worker:$SHA
 
 kubectl apply -f k8s
-
-for i in ${IMAGES[@]}
-do
-    kubectl set image \
-    deployment/${i}-deployment \
-    ${i}=${CONTAINER_PREFIX}${i}:${GIT_SHA}
-done
-
-
+kubectl set image deployments/server-deployment server=ctl11/multi-server:$SHA
+kubectl set image deployments/client-deployment client=ctl11/multi-client:$SHA
+kubectl set image deployments/worker-deployment worker=ctl11/multi-worker:$SHA
