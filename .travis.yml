@@ -20,7 +20,7 @@ before_install:
   - yes | gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-deployment.json
   - gcloud auth list
-  - gcloud auth Log
+  # - gcloud logging logs list
   #- gcloud services enable container.googleapi.com
   - gcloud config set project multi-k8s-289408
   - gcloud config set compute/zone europe-west1
