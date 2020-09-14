@@ -16,11 +16,11 @@ before_install:
   # Add gcloud to $PATH
   - source /home/travis/google-cloud-sdk/path.bash.inc
   - gcloud version
+  - gcloud services enable container.googleapi.com
   - yes | gcloud components update kubectl
   - gcloud auth activate-service-account --key-file service-account.json
-  - cat service-account.json
   - gcloud config set project multi-k8s-289408
-  #- gcloud config set compute/zone europe-west1
+  - gcloud config set compute/zone europe-west1
   - gcloud container clusters get-credentials multi-k8s --region europe-west1 --project multi-k8s-280408
 
 
