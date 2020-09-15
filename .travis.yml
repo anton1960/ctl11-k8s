@@ -38,7 +38,8 @@ before_install:
 
 script:
   #- docker run eu.gcr.io/docker-kubernetes-237606/jsdevtom/react-test npm test -- --coverage
-     docker run -e CI=true ctl11/react-test mpm test
+    docker run -e CI=true ctl11/react-test npm test
+   #  docker run ctl11/react-test 
 deploy:
   provider: script
   script: bash ./deploy.sh
