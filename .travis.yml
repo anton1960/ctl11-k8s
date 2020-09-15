@@ -24,7 +24,7 @@ before_install:
   #- gcloud services enable container.googleapi.com
   - gcloud config set project multi-k8s-289408
   - gcloud config set compute/zone europe-west1
-  - gcloud container clusters get-credentials multi-k8s --region europe-west1 --project multi-k8s-289408
+  - gcloud container clusters get-credentials mulit-k8s --region europe-west1 --project multi-k8s-289408
 
 
 
