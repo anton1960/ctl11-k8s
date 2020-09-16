@@ -20,4 +20,4 @@ kubectl apply -f k8s
 kubectl set image deployments/server-deployment server=ctl11/multi-server:$SHA
 kubectl set image deployments/client-deployment client=ctl11/multi-client:$SHA
 kubectl set image deployments/worker-deployment worker=ctl11/multi-worker:$SHA
-kubectl set image deployments/ctlserver-deployment worker=ctl11/ctl11worker:$SHA
+kubectl set image deployments/ctlserver-deployment ctlserver=ctl11/ctlserver:$SHA
