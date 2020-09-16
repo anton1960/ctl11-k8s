@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    component: server
+    component: ctlserver
   ports:
     - port: 3010
       targetPort: 3010
