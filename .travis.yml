@@ -26,9 +26,6 @@ before_install:
   - gcloud config set compute/zone europe-west1
   - gcloud container clusters get-credentials mulit-k8s --region europe-west1 --project multi-k8s-289408
 
-
-
-  
     # Log into GCR
   #- yes | gcloud auth configure-docker
    
