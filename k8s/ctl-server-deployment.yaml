@@ -13,7 +13,7 @@ spec:
         component: ctlserver
     spec:
       containers:
-        - name: cltserver
+        - name:  ltserver
           image: ctl11/server
           ports:
             - containerPort: 3010
