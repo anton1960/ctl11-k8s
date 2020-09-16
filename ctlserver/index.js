@@ -19,6 +19,9 @@ app.get('/', (req, res) => {
   res.send('Hi clt root server');
 });
 
+app.get('/all', (req, res) => {
+  res.send('Hi all server');
+});
 
 app.listen(port, err => {
   console.log('Listening port ' + port);
