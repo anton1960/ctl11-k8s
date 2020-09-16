@@ -6,14 +6,14 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      component: server
+      component: ctlserver
   template:
     metadata:
       labels:
-        component: server
+        component: ctlserver
     spec:
       containers:
-        - name: server
+        - name: cltserver
           image: alu1960/server
           ports:
             - containerPort: 3010
