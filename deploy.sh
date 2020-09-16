@@ -9,8 +9,6 @@ docker push ctl11/multi-server:latest
 docker push ctl11/multi-worker:latest
 docker push ctl11/ctlserver:latest
 
-
-
 docker push ctl11/multi-client:$SHA
 docker push ctl11/multi-server:$SHA
 docker push ctl11/multi-worker:$SHA
