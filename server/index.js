@@ -36,8 +36,7 @@ const redisPublisher = redisClient.duplicate();
 // Express route handlers
 
 app.get('/', (req, res) => {
-  localStorage
-  res.send('Hi');
+    res.send('Hi');
 });
 
 app.get('/values/all', async (req, res) => {
@@ -61,6 +60,7 @@ app.post('/values', async (req, res) => {
 
   redisClient.hset('values', index, 'Nothing yet!');
   redisPublisher.publish('insert', index);
+  console.log("insert $1")
   pgClient.query('INSERT INTO values(number) VALUES($1)', [index]);
 
   res.send({ working: true });
