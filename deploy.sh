@@ -2,7 +2,7 @@ docker build -t ctl11/multi-client:latest -t ctl11/multi-client:$SHA -f ./client
 docker build -t ctl11/multi-server:latest -t ctl11/multi-server:$SHA -f ./server/Dockerfile ./server
 docker build -t ctl11/multi-worker:latest -t ctl11/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 #docker build -t ctl11/ctlserver:latest    -t ctl11/ctlserver:$SHA    -f ./ctlserver/Dockerfile ./ctlserver
-
+ 
 
 docker push ctl11/multi-client:latest
 docker push ctl11/multi-server:latest
