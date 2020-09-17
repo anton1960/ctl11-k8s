@@ -26,4 +26,4 @@ spec:
               servicePort: 5000
           - path: /ctl/?(.*)
               # UPDATE THIS LINE ABOVE
-         
+          
