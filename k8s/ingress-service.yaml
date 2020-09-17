@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1beta1
 # UPDATE THE API
 kind: Ingress
 metadata:
-  name: ingress-service
+  name: ingressservice
   annotations:
     cloud.google.com/load-balancer-type: 'Internal'
     kubernetes.io/ingress.class: nginx
