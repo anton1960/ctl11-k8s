@@ -32,7 +32,7 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
  
   - docker build -t ctl11/react-test -f ./client/Dockerfile.dev ./client
-
+ 
 script:
   #- docker run eu.gcr.io/docker-kubernetes-237606/jsdevtom/react-test npm test -- --coverage
     docker run -e CI=true ctl11/react-test npm test
