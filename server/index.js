@@ -20,12 +20,12 @@ const pgClient = new Pool({
 });
 pgClient.on('error', () => console.log('Lost PG connection'));
 console.log(pgClient)
-pgClient
+await pgClient
   .query('CREATE TABLE IF NOT EXISTS values (number INT)')
   .catch(err => console.log(err));
   console.log("Tabelle erstellt")
 
-  pgClient
+await  pgClient
   .query('CREATE TABLE IF NOT EXISTS werte (number INT)')
   .catch(err => console.log(err));
   console.log("Tabelle erstellt")
