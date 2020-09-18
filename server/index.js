@@ -20,16 +20,16 @@ const pgClient = new Pool({
 });
 pgClient.on('error', () => console.log('Lost PG connection'));
 console.log(pgClient)
-await pgClient
+pgClient
   .query('CREATE TABLE IF NOT EXISTS values (number INT)')
-  .catch(err => console.log(err));
+  .catch(err => console.log(err)); 
   console.log("Tabelle erstellt")
 
-await  pgClient
+  pgClient
   .query('CREATE TABLE IF NOT EXISTS werte (number INT)')
   .catch(err => console.log(err));
   console.log("Tabelle erstellt")
-  pgClient.query('INSERT INTO werte (number) VALUES("999")');
+  // pgClient.query('INSERT INTO werte (number) VALUES("999")');
 
 // Redis Client Setup
 const redis = require('redis');
