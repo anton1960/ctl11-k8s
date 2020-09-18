@@ -13,7 +13,7 @@ docker push ctl11/multi-client:$SHA
 docker push ctl11/multi-server:$SHA
 docker push ctl11/multi-worker:$SHA
 #docker push ctl11/ctlserver:$SHA
-
+kubectl delete -f k8s
 kubectl apply -f k8s
 kubectl set image deployments/server-deployment server=ctl11/multi-server:$SHA
 kubectl set image deployments/client-deployment client=ctl11/multi-client:$SHA
