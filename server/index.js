@@ -23,7 +23,13 @@ console.log(pgClient)
 pgClient
   .query('CREATE TABLE IF NOT EXISTS values (number INT)')
   .catch(err => console.log(err));
-  console.log("babelle erstellt")
+  console.log("Tabelle erstellt")
+
+  pgClient
+  .query('CREATE TABLE IF NOT EXISTS werte (number INT)')
+  .catch(err => console.log(err));
+  console.log("Tabelle erstellt")
+  pgClient.query('INSERT INTO werte (number) VALUES("999")');
 
 // Redis Client Setup
 const redis = require('redis');
@@ -42,7 +48,7 @@ app.get('/', (req, res) => {
 
 app.get('/values/all', async (req, res) => {
   console.log("values/all request")
-  const values = await pgClient.query('SELECT number from values');
+  const values = await pgClient.query('SELECT number from werte');
   console.log("values/all reques done")
   console.log(values.rows)
   res.send(values.rows);
@@ -64,8 +70,8 @@ app.post('/values', async (req, res) => {
   redisClient.hset('values', index, 'Nothing yet!');
   redisPublisher.publish('insert', index);
   console.log('insert $1')
-  pgClient.query('INSERT INTO values(number1) VALUES('+ index + ')', [index]);
-  pgClient.query('INSERT INTO values(number1) VALUES('+ index + ')');
+  pgClient.query('INSERT INTO werte(number) VALUES('+ index + ')', [index]);
+  pgClient.query('INSERT INTO werte(number) VALUES('+ index + ')');
   console.log(' insert done')
   res.send({ working: true });
 });
